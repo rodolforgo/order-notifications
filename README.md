@@ -26,8 +26,6 @@ Projeto experimental para explorar os conceitos centrais do Apache Kafka (topics
 ]
 ```
 
-> O campo `status` é opcional — quando não informado, o servidor define `"CREATED"` automaticamente.
-
 **Output**
 
 ```json
