@@ -28,9 +28,6 @@ Ambos os endpoints aceitam uma lista de pedidos no body:
   {
     "id": "def456",
     "item": "Canjica",
-    "status": "PROCESSING"
   }
 ]
 ```
-
-> O campo `status` é opcional — quando não informado, o servidor define `"CREATED"` automaticamente.
