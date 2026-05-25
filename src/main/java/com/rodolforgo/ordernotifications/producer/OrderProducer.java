@@ -21,4 +21,18 @@ public class OrderProducer {
         kafkaTemplate.send(topic, order.id(), order);
         System.out.printf("[PRODUCER] Pedido enviado: %s%n", order);
     }
+
+    public void sendSync(Order order) {
+        try {
+            long inicio = System.currentTimeMillis();
+            kafkaTemplate.send(topic, order.id(), order).get();
+            Thread.sleep(1000); // simula latência de confirmação
+            long duracao = System.currentTimeMillis() - inicio;
+            System.out.printf("[PRODUCER] Pedido enviado (sync): %s — %dms%n", order, duracao);
+        } catch (Exception e) {
+            throw new RuntimeException("Falha ao enviar pedido ao Kafka", e);
+        }
+    }
+
+
 }
