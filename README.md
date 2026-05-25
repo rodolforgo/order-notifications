@@ -9,3 +9,10 @@ Projeto experimental para explorar os conceitos centrais do Apache Kafka (topics
 - **Consumer** — `OrderConsumer` escuta o tópico com `@KafkaListener` e exibe a notificação no log
 - **Consumer Group** — `notification-service` agrupa consumers para balancear a carga entre as partições
 - **Offset** — configurado com `auto-offset-reset=earliest` para que um novo consumer group leia o tópico desde o início
+
+## Endpoints para experimentações
+
+| Método | Rota | Descrição |
+|---|---|---|
+| `POST` | `/orders/sync` | Envia um lote aguardando confirmação do broker (~1s por mensagem) |
+| `POST` | `/orders/async` | Envia um lote sem aguardar confirmação — retorna `202` imediatamente |
