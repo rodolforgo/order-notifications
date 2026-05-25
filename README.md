@@ -17,17 +17,22 @@ Projeto experimental para explorar os conceitos centrais do Apache Kafka (topics
 | `POST` | `/orders/sync` | Envia um lote aguardando confirmação do broker (~1s por mensagem) |
 | `POST` | `/orders/async` | Envia um lote sem aguardar confirmação — retorna `202` imediatamente |
 
-Ambos os endpoints aceitam uma lista de pedidos no body:
+**Input**
 
 ```json
 [
-  {
-    "id": "abc123",
-    "item": "Milho"
-  },
-  {
-    "id": "def456",
-    "item": "Canjica",
-  }
+  { "id": "abc123", "item": "Milho" },
+  { "id": "def456", "item": "Canjica" }
+]
+```
+
+> O campo `status` é opcional — quando não informado, o servidor define `"CREATED"` automaticamente.
+
+**Output**
+
+```json
+[
+  { "id": "abc123", "item": "Milho", "status": "CREATED" },
+  { "id": "def456", "item": "Canjica", "status": "CREATED" }
 ]
 ```
