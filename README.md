@@ -10,6 +10,15 @@ Projeto experimental para explorar os conceitos centrais do Apache Kafka (topics
 - **Consumer Group** — `notification-service` agrupa consumers para balancear a carga entre as partições
 - **Offset** — configurado com `auto-offset-reset=earliest` para que um novo consumer group leia o tópico desde o início
 
+## Para testar
+
+```bash
+./mvnw test
+```
+
+O container Kafka sobe automaticamente antes dos testes e é encerrado ao final.
+Os testes simulam as requisições HTTPs junto ao Kafka.
+
 ## Endpoints para experimentações
 
 | Método | Rota | Descrição |
